@@ -9,10 +9,10 @@
     </li>
   </ul>
   <h5>Steps</h5>
-  <ul class="mb-3">
+  <ol class="mb-3">
     <li *ngFor="let step of recipe.steps">
       {{ step }}
     </li>
-  </ul>
+  </ol>
   <button class="btn btn-danger mb-3" (click)="onDeleteRecipe()">Delete</button>
 </div>

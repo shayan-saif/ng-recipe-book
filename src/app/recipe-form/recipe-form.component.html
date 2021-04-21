@@ -27,8 +27,9 @@
           <button type="button" (click)="onAddStep()">Add Step</button>
         </div>
 
+        <button [routerLink]="['/']">Back</button>
         <button type="submit" [disabled]="recipeForm.invalid">Submit</button>
-
+        
       </form>
     </div>
   </div>

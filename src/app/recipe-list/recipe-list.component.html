@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 mb-3" style="border: 1px solid white">
+    <div class="col-12 mb-3">
       <button routerLink="/add" class="add float-end">Add Recipe</button>
     </div>
   </div>
   <div class="row">
-    <div class="col-12 col-md-4 mb-3" style="border: 1px solid white">
+    <div class="col-12 col-md-4 mb-3">
       <div class="list-group" *ngFor="let recipe of recipes">
         <button type="button"
                 [class.active]="selectedRecipe === recipe"
@@ -14,7 +14,7 @@
         </button>
       </div>
     </div>
-    <div class="col-12 col-md-8 mb-3" style="border: 1px solid white">
+    <div class="col-12 col-md-8 mb-3">
       <app-recipe-detail 
       [recipe]="selectedRecipe"
       (deleteRecipe)="onDeleteRecipe($event)"></app-recipe-detail>

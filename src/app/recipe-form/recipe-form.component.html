@@ -27,7 +27,7 @@
           <button type="button" (click)="onAddStep()">Add Step</button>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" [disabled]="recipeForm.invalid">Submit</button>
 
       </form>
     </div>

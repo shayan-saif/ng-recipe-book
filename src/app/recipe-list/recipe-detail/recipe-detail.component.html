@@ -1,0 +1,18 @@
+<div *ngIf="recipe">
+  <h4>{{ recipe.title }}</h4>
+  <p>{{ recipe.description }}</p>
+  <hr>
+  <h5>Ingredients</h5>
+  <ul>
+    <li *ngFor="let ingredient of recipe.ingredients">
+      {{ ingredient }}
+    </li>
+  </ul>
+  <h5>Steps</h5>
+  <ul class="mb-3">
+    <li *ngFor="let step of recipe.steps">
+      {{ step }}
+    </li>
+  </ul>
+  <button class="btn btn-danger mb-3" (click)="onDeleteRecipe()">Delete</button>
+</div>

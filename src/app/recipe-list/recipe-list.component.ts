@@ -12,6 +12,7 @@ export class RecipeListComponent implements OnInit {
 
   recipes: RecipeModel[] = [];
   selectedRecipe: RecipeModel;
+
   private getSub: Subscription;
   private delSub: Subscription;
 
@@ -46,7 +47,10 @@ export class RecipeListComponent implements OnInit {
 
   ngOnDestroy() {
     this.getSub.unsubscribe();
-    this.delSub.unsubscribe();
+    if(this.delSub) {
+      this.delSub.unsubscribe();
+    }
+
   }
 
 }

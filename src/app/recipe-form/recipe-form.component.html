@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <label for="title" class="form-label">Recipe Title</label>
+        <input type="text" class="input-text" id="title" formControlName="title">
+
+        <label for="description" class="form-label">Recipe Description</label>
+        <textarea class="input-text" id="description" row="10" cols="35" formControlName="description"></textarea>
+
+        <label for="img" class="form-label">Image URL</label>
+        <input type="text" class="input-text" id="img" formControlName="img">
+
+        <div formArrayName="ingredients">
+          <label>Ingredients</label>
+          <div *ngFor="let ingredientControl of getIngredientControls(); let i = index">
+            <input type="text" class="input-text" [formControlName]="i">
+          </div><br>
+          <button type="button" (click)="onAddIngredient()">Add Ingredient</button>
+        </div>
+
+        <div formArrayName="steps">
+          <label>Steps</label>
+          <div *ngFor="let stepControl of getStepControls(); let i = index">
+            <input type="text" class="input-text" [formControlName]="i">
+          </div><br>
+          <button type="button" (click)="onAddStep()">Add Step</button>
+        </div>
+
+        <button type="submit">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>

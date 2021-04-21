@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RecipeModel } from './recipe.model';
 import { Observable } from 'rxjs';
@@ -12,6 +12,10 @@ export class RecipeService {
 
   getRecipes(): Observable<RecipeModel[]> {
     return this.http.get<RecipeModel[]>('http://localhost:3000/api/recipes');
+  }
+
+  addRecipe(recipe: RecipeModel) {
+    return this.http.post('http://localhost:3000/api/recipes', recipe);
   }
 
   deleteRecipe(recipe: RecipeModel) {

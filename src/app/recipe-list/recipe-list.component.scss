@@ -6,5 +6,13 @@ button {
 }
 
 button.active {
-  background-color: rgb(0, 117, 49);
+  background-color: green;
+}
+
+button.add {
+  background-color: rgb(31, 31, 31);
+}
+
+button.add:hover {
+  background-color: green;
 }

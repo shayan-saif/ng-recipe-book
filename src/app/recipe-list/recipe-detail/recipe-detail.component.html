@@ -1,18 +1,26 @@
 <div *ngIf="recipe">
-  <h4>{{ recipe.title }}</h4>
-  <p>{{ recipe.description }}</p>
+  <div class="row">
+    <div class="col-10">
+      <h4>{{ recipe.title }}</h4>
+      <p class="mb-3">{{ recipe.dateCreated | date: short }}</p>
+      <p>{{ recipe.description }}</p>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-danger mb-3 float-end" (click)="onDeleteRecipe()">Delete</button>
+    </div>
+  </div>
   <hr>
   <h5>Ingredients</h5>
-  <ul>
-    <li *ngFor="let ingredient of recipe.ingredients">
+  <ul class="list-group list-group-flush mb-3">
+    <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
       {{ ingredient }}
     </li>
   </ul>
+  <hr>
   <h5>Steps</h5>
   <ol class="mb-3">
     <li *ngFor="let step of recipe.steps">
       {{ step }}
     </li>
   </ol>
-  <button class="btn btn-danger mb-3" (click)="onDeleteRecipe()">Delete</button>
 </div>

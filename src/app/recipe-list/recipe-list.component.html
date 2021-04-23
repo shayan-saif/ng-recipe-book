@@ -1,24 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 mb-3">
-      <button routerLink="/add" class="add float-end">Add Recipe</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-md-4 mb-3">
-      <div class="list-group" *ngFor="let recipe of recipes">
-        <button type="button"
-                [class.active]="selectedRecipe === recipe"
-                (click)="onSelectRecipe(recipe)">
-          {{ recipe.title }}
-        </button>
+    <div class="col-12 col-lg-4 mb-3">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="d-grid gap-2"><button routerLink="/add" class="btn btn-success">Add New Recipe</button></div>
+          <hr>
+          <form [formGroup]="filterForm" class="mb-3">
+            <input type="text" class="form-control" placeholder="Search" formControlName="searchTerm">
+          </form>
+          <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action" *ngFor="let recipe of filteredList"
+              [class.active]="selectedRecipe === recipe" (click)="onSelectRecipe(recipe)">
+              {{ recipe.title }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-12 col-md-8 mb-3">
-      <app-recipe-detail 
-      [recipe]="selectedRecipe"
-      (deleteRecipe)="onDeleteRecipe($event)"></app-recipe-detail>
+    <div class="col-12 col-lg-8 mb-3">
+      <div class="card shadow" *ngIf="selectedRecipe">
+        <div class="card-body">
+          <app-recipe-detail [recipe]="selectedRecipe" (deleteRecipe)="onDeleteRecipe($event)"></app-recipe-detail>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

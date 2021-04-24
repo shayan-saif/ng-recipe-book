@@ -1,36 +1,64 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-        <label for="title" class="form-label">Recipe Title</label>
-        <input type="text" class="input-text" id="title" formControlName="title">
+    <div class="col-12 col-md-4 mx-auto">
+      <div class="card">
+        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+          <div class="card-body">
+            <label for="title" class="form-label">Recipe Title</label>
+            <input type="text" class="form-control mb-3" id="title" placeholder="Homemade Pizza" formControlName="title">
 
-        <label for="description" class="form-label">Recipe Description</label>
-        <textarea class="input-text" id="description" row="10" cols="35" formControlName="description"></textarea>
+            <label for="description" class="form-label">Recipe Description</label>
+            <textarea class="form-control mb-3" id="description" row="10" cols="35" placeholder="Great for the whole family"
+              formControlName="description"></textarea>
 
-        <label for="img" class="form-label">Image URL</label>
-        <input type="text" class="input-text" id="img" formControlName="img">
+            <label for="img" class="form-label">Image URL</label>
+            <input type="text" class="form-control mb-3" id="img" placeholder="https://example.com/lasagna.jpg" formControlName="img">
 
-        <div formArrayName="ingredients">
-          <label>Ingredients</label>
-          <div *ngFor="let ingredientControl of getIngredientControls(); let i = index">
-            <input type="text" class="input-text" [formControlName]="i">
-          </div><br>
-          <button type="button" (click)="onAddIngredient()">Add Ingredient</button>
-        </div>
+            <div formArrayName="ingredients">
+              <div class="row mb-3">
+                <div class="col">
+                  <label>Ingredients</label>
+                </div>
+                <div class="col text-end">
+                  <button type="button" class="btn btn-sm btn-outline-primary" (click)="onAddIngredient()">Add
+                    Ingredient</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div *ngFor="let ingredientControl of getIngredientControls(); let i = index">
+                    <input type="text" class="form-control mb-3" [formControlName]="i">
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div formArrayName="steps">
-          <label>Steps</label>
-          <div *ngFor="let stepControl of getStepControls(); let i = index">
-            <input type="text" class="input-text" [formControlName]="i">
-          </div><br>
-          <button type="button" (click)="onAddStep()">Add Step</button>
-        </div>
-
-        <button [routerLink]="['/']">Back</button>
-        <button type="submit" [disabled]="recipeForm.invalid">Submit</button>
-        
-      </form>
+            <div formArrayName="steps">
+              <div class="row mb-3">
+                <div class="col">
+                  <label>Steps</label>
+                </div>
+                <div class="col text-end">
+                  <button type="button" class="btn btn-sm btn-outline-primary" (click)="onAddStep()">Add Step</button>
+                </div>
+              </div>
+              <div class="row">
+                <div *ngFor="let stepControl of getStepControls(); let i = index">
+                  <input type="text" class="form-control mb-3" [formControlName]="i">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-end">
+            <div class="row">
+              <div class="col">
+                <button type="button" class="btn btn-secondary" [routerLink]="['/']">Back</button>
+                <button type="submit" class="btn btn-primary ms-2" [disabled]="recipeForm.invalid">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
